@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects</title>
+
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(120deg, #0b1cff, #1e90ff, #ff7a18, #ffb347);
+      background-size: 300% 300%;
+      animation: gradientMotion 14s ease infinite;
+      color: #f5f7ff;
+      padding: 3rem 2rem;
+    }
+
+    @keyframes gradientMotion {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .projects-container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 3rem;
+      background: linear-gradient(90deg, #ffffff, #ffd29a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* PROJECT GROUP */
+    .project-group {
+      margin-bottom: 4rem;
+    }
+
+    .project-group h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: #ffe3c2;
+    }
+
+    /* GRID */
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+    }
+
+    /* PROJECT CARD */
+    .project-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(14px);
+      border-radius: 20px;
+      padding: 2rem;
+      min-height: 180px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+      cursor: pointer;
+      opacity: 0;
+      transform: translateX(-60px);
+      transition: transform 0.6s ease, opacity 0.6s ease;
+    }
+
+    .project-card.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px) scale(1.02);
+    }
+
+    .project-card h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      color: #ffffff;
+    }
+
+    .project-card span {
+      font-size: 0.9rem;
+      color: #ffd8a8;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="projects-container">
+    <h1>Selected Projects</h1>
+
+    <!-- SOCIAL MEDIA DESIGN -->
+    <section class="project-group">
+      <h2>Social Media Design</h2>
+      <div class="project-grid">
+        <div class="project-card" onclick="openCase('social-1.html')">
+          <h3>Nexapay</h3>
+          <span>Instagram • Twitter</span>
+        </div>
+
+        <div class="project-card" onclick="openCase('social-2.html')">
+          <h3>BiteRush</h3>
+          <span>Instagram • Twitter</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- BRAND DESIGN -->
+    <section class="project-group">
+      <h2>Brand Design</h2>
+      <div class="project-grid">
+        <div class="project-card" onclick="openCase('brand-1.html')">
+          <h3>Brand Identity One</h3>
+          <span>Logo • Brand Applications</span>
+        </div>
+
+        <div class="project-card" onclick="openCase('brand-2.html')">
+          <h3>Brand Identity Two</h3>
+          <span>Strategy • Visual Direction</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISUAL IDENTITY -->
+    <section class="project-group">
+      <h2>Carousels</h2>
+      <div class="project-grid">
+        <div class="project-card" onclick="openCase('identity-1.html')">
+          <h3>Product Visual Identity</h3>
+          <span>Design System</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- SPECIAL PROJECTS -->
+    <section class="project-group">
+      <h2>Special Projects</h2>
+      <div class="project-grid">
+        <div class="project-card" onclick="openCase('specialproject-1.html')">
+          <h3>Versatile Designs</h3>
+          <span>Creative Exploration</span>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script>
+    function openCase(page) {
+      window.location.href = page;
+    }
+
+    const cards = document.querySelectorAll('.project-card');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    cards.forEach(card => observer.observe(card));
+  </script>
+
+</body>
+</html>
+

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brand Design 02 | Case Study</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --blue-dark: #0b1d3a;
+      --blue-mid: #123c7b;
+      --orange-soft: #ff8c42;
+      --orange-deep: #ff6a00;
+      --text-main: #eaf1ff;
+      --text-muted: rgba(234,241,255,.7);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-main);
+      min-height: 100vh;
+      background: linear-gradient(
+        120deg,
+        var(--blue-dark),
+        var(--blue-mid),
+        var(--orange-soft),
+        var(--blue-mid)
+      );
+      background-size: 400% 400%;
+      animation: gradientMove 18s ease infinite;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 80px 24px 120px;
+    }
+
+    .header {
+      margin-bottom: 64px;
+    }
+
+    .header h1 {
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      margin-bottom: 16px;
+    }
+
+    .header p {
+      max-width: 720px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* CASE TEXT */
+    .case-section {
+      max-width: 780px;
+      margin-bottom: 64px;
+    }
+
+    .case-section h2 {
+      margin-bottom: 16px;
+    }
+
+    .case-section p {
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+
+    /* GRID */
+    .grid {
+      column-count: 3;
+      column-gap: 24px;
+      margin-bottom: 80px;
+    }
+
+    .grid img {
+      width: 100%;
+      margin-bottom: 24px;
+      border-radius: 16px;
+      break-inside: avoid;
+      cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+      .grid { column-count: 2; }
+    }
+
+    @media (max-width: 600px) {
+      .grid { column-count: 1; }
+    }
+
+    .back {
+      display: inline-block;
+      color: var(--orange-soft);
+      text-decoration: none;
+      margin-top: 32px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+      <h1>Brand Design 02</h1>
+      <p>
+        A modern brand system built with flexibility and emotional resonance in mind.
+        This project explores identity adaptability across digital and physical platforms.
+      </p>
+    </div>
+
+    <!-- CASE STUDY -->
+    <section class="case-section">
+      <h2>Case Study</h2>
+      <p>
+        AURORA is a modern activewear brand designed to inspire strength, motion,
+        and confidence. The identity connects performance and style while remaining
+        scalable across digital and physical platforms.
+      </p>
+    </section>
+
+    <!-- VISUALS -->
+    <section>
+      <div class="grid">
+        <img src="assets/images/brand-2/brand2-1.jpg">
+        <img src="assets/images/brand-2/brand2-2.png">
+        <img src="assets/images/brand-2/brand2-3.jpg">
+        <img src="assets/images/brand-2/brand2-4.jpg">
+        <img src="assets/images/brand-2/brand2-5.jpg">
+        <img src="assets/images/brand-2/brand2-6.jpg">
+      </div>
+    </section>
+
+    <!-- OUTCOME -->
+    <section class="case-section">
+      <h2>Outcome</h2>
+      <p>
+        The final visual system strengthened the brand’s presence across social and digital platforms,
+        improved audience recognition, and introduced a flexible framework that scales with future growth.
+      </p>
+    </section>
+
+    <!-- BACK -->
+    <a href="projects.html" class="back">← Back to Projects</a>
+
+  </div>
+
+</body>
+</html>
+
+

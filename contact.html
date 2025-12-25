@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Ayotomiwa Emmanuel</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --blue-dark: #0b1d3a;
+      --blue-mid: #123c7b;
+      --orange-soft: #ff8c42;
+      --orange-deep: #ff6a00;
+      --text-main: #eaf1ff;
+      --text-muted: rgba(234,241,255,.7);
+      --glass: rgba(255,255,255,.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      min-height: 100vh;
+      color: var(--text-main);
+      background: linear-gradient(
+        120deg,
+        var(--blue-dark),
+        var(--blue-mid),
+        var(--orange-soft),
+        var(--blue-mid)
+      );
+      background-size: 400% 400%;
+      animation: gradientMove 18s ease infinite;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: -20%;
+      background:
+        radial-gradient(circle at top right, rgba(255,140,66,.25), transparent 60%),
+        radial-gradient(circle at bottom left, rgba(18,60,123,.35), transparent 55%);
+      filter: blur(60px);
+      z-index: -1;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 100px 24px;
+    }
+
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .intro h1 {
+      font-size: clamp(2.4rem, 5vw, 3.5rem);
+      margin-bottom: 16px;
+    }
+
+    .intro p {
+      max-width: 520px;
+      line-height: 1.7;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-links a {
+      text-decoration: none;
+      color: var(--text-main);
+      padding: 18px 22px;
+      border-radius: 16px;
+      background: var(--glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.12);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: transform .3s ease, background .3s ease;
+    }
+
+    .contact-links a:hover {
+      transform: translateY(-4px);
+      background: rgba(255,255,255,.12);
+    }
+
+    .contact-links span {
+      color: var(--orange-soft);
+      font-weight: 600;
+    }
+
+    /* Contact Card */
+    .contact-card {
+      background: rgba(255,255,255,.1);
+      border-radius: 24px;
+      padding: 48px 40px;
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,.15);
+    }
+
+    .contact-card h2 {
+      margin-bottom: 12px;
+      font-size: 1.8rem;
+    }
+
+    .contact-card p {
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .contact-item {
+      margin-bottom: 24px;
+    }
+
+    .contact-item label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .contact-item div {
+      font-size: 1.05rem;
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 48px;
+      color: var(--orange-soft);
+      text-decoration: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="contact-wrapper">
+
+      <!-- LEFT SIDE -->
+      <div class="intro">
+        <h1>Let’s Work Together</h1>
+        <p>
+          Have a project in mind, a brand to build, or visuals that need clarity?
+          I’m always open to meaningful collaborations and creative conversations.
+        </p>
+
+        <div class="contact-links">
+          <a href="https://linktr.ee/thecreativenuel" target="_blank">
+            Linktree
+            <span>↗</span>
+          </a>
+
+          <a href="mailto:@gmail.com">
+            Send an Email
+            <span>↗</span>
+          </a>
+
+          <a href="projects.html">
+            View My Work
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="contact-card">
+        <h2>Contact Details</h2>
+        <p>Reach out directly via any of the channels below.</p>
+
+        <div class="contact-item">
+          <label>Email</label>
+          <div>thecreativenuel@gmail.com</div>
+        </div>
+
+        <div class="contact-item">
+          <label>Phone</label>
+          <div>+234 9032209003</div>
+        </div>
+
+        <div class="contact-item">
+          <label>Availability</label>
+          <div>Open for freelance & collaborations</div>
+        </div>
+      </div>
+
+    </div>
+
+    <a href="index.html" class="back">← Back to Home</a>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Case Study – Web3 Carousel Campaign</title>
+
+  <style>
+    /* RESET */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(120deg, #0b1cff, #1e90ff, #ff7a18, #ffb347);
+      background-size: 300% 300%;
+      animation: gradientMotion 14s ease infinite;
+      color: #f5f7ff;
+      padding: 3rem 1.5rem;
+    }
+
+    @keyframes gradientMotion {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .case-container {
+      max-width: 900px;
+      margin: auto;
+    }
+
+    /* BACK LINK */
+    .back-link {
+      display: inline-block;
+      margin-bottom: 2rem;
+      color: #ffd29a;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* HEADER */
+    .case-header h1 {
+      font-size: 2.6rem;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, #ffffff, #ffd29a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .case-header span {
+      color: #ffe3c2;
+      font-size: 1rem;
+    }
+
+    /* SECTIONS */
+    .case-section {
+      margin-top: 3.5rem;
+    }
+
+    .case-section h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      color: #ffd29a;
+    }
+
+    .case-section p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: #f1f3ff;
+      max-width: 780px;
+    }
+
+    /* IMAGE GRID */
+    .image-grid {
+      margin-top: 1.8rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.2rem;
+    }
+
+    .image-grid img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 16px;
+      cursor: pointer;
+      background: rgba(255,255,255,0.08);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .image-grid img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 10, 25, 0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 18px;
+    }
+
+    .lightbox.active {
+      display: flex;
+    }
+
+    .lightbox::after {
+      content: "×";
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      font-size: 2.5rem;
+      color: #ffd29a;
+      cursor: pointer;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .case-header h1 {
+        font-size: 2.1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="case-container">
+
+    <a href="projects.html" class="back-link">← Back to Projects</a>
+
+    <header class="case-header">
+      <h1>SPECIAL FLYER DESIGNS</h1>
+      <span>Social Media Design • Instagram & X</span>
+    </header>
+
+    <section class="case-section">
+      <h2>Overview</h2>
+      <p>
+        This project focused on creating a visually consistent and engaging
+        carousel design system for brands, aimed at increasing engagement
+        and brand recognition across social platforms.
+      </p>
+    </section>
+
+    <section class="case-section">
+      <h2>The Problem</h2>
+      <p>
+        The brand struggled with inconsistent visuals and low content retention.
+        There was a need for a recognizable visual language that could scale
+        across multiple posts without losing clarity.
+      </p>
+    </section>
+
+    <section class="case-section">
+      <h2>The Solution</h2>
+      <p>
+        I designed a modular carousel system using bold typography, structured
+        spacing, and a strong color hierarchy, allowing the brand to communicate
+        complex ideas clearly and consistently.
+      </p>
+    </section>
+
+    <!-- VISUALS -->
+    <section class="case-section">
+      <h2>Visuals</h2>
+
+      <div class="image-grid">
+        <img src="assets/images/specialproject/specialproject1.jpg" onclick="openLightbox(this)">
+        <img src="assets/images/specialproject/specialproject2.jpg" onclick="openLightbox(this)">
+        <img src="assets/images/specialproject/specialproject3.jpg" onclick="openLightbox(this)">
+        <img src="assets/images/specialproject/specialproject4.jpg" onclick="openLightbox(this)">
+        <img src="assets/images/specialproject/specialproject5.jpg" onclick="openLightbox(this)">
+        <img src="assets/images/specialproject/specialproject6.jpg" onclick="openLightbox(this)">
+        <img src="assets/images/specialproject/specialproject7.jpg" onclick="openLightbox(this)">
+        <img src="assets/images/specialproject/specialproject8.jpg" onclick="openLightbox(this)">
+        <img src="assets/images/specialproject/specialproject9.jpg" onclick="openLightbox(this)">
+        <img src="assets/images/specialproject/specialproject10.jpg" onclick="openLightbox(this)">
+        <img src="assets/images/specialproject/specialproject11.jpg" onclick="openLightbox(this)">
+        <img src="assets/images/specialproject/specialproject12.jpg" onclick="openLightbox(this)">
+      </div>
+    </section>
+
+    <section class="case-section">
+      <h2>Outcome</h2>
+      <p>
+        The new design system improved audience engagement, strengthened brand
+        recognition, and provided a reusable framework for future content.
+      </p>
+    </section>
+
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img">
+  </div>
+
+  <script>
+    function openLightbox(img) {
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightbox-img");
+      lightboxImg.src = img.src;
+      lightbox.classList.add("active");
+    }
+
+    function closeLightbox() {
+      document.getElementById("lightbox").classList.remove("active");
+    }
+  </script>
+
+</body>
+</html>
+

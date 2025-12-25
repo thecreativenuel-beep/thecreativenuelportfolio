@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brand Design 01 | Case Study</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --blue-dark: #0b1d3a;
+      --blue-mid: #123c7b;
+      --orange-soft: #ff8c42;
+      --orange-deep: #ff6a00;
+      --text-main: #eaf1ff;
+      --text-muted: rgba(234,241,255,.7);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text-main);
+      min-height: 100vh;
+      background: linear-gradient(
+        120deg,
+        var(--blue-dark),
+        var(--blue-mid),
+        var(--orange-soft),
+        var(--blue-mid)
+      );
+      background-size: 400% 400%;
+      animation: gradientMove 18s ease infinite;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .containercontainer {
+      max-width: 1200px;
+      margin: auto;
+      padding: 80px 24px 120px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 80px 24px 120px;
+    }
+
+    .header {
+      margin-bottom: 64px;
+    }
+
+    .header h1 {
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
+      margin-bottom: 16px;
+    }
+
+    .header p {
+      max-width: 720px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* TEXT SECTIONS */
+    .case-section {
+      max-width: 780px;
+      margin-bottom: 64px;
+    }
+
+    .case-section h2 {
+      margin-bottom: 16px;
+    }
+
+    .case-section p {
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+
+    /* MASONRY GRID */
+    .grid {
+      column-count: 3;
+      column-gap: 24px;
+      margin-bottom: 80px;
+    }
+
+    .grid img {
+      width: 100%;
+      margin-bottom: 24px;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: transform .4s ease, box-shadow .4s ease;
+      break-inside: avoid;
+      background: rgba(255,255,255,.05);
+    }
+
+    .grid img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 20px 40px rgba(0,0,0,.4);
+    }
+
+    @media (max-width: 900px) {
+      .grid { column-count: 2; }
+    }
+
+    @media (max-width: 600px) {
+      .grid { column-count: 1; }
+    }
+
+    .back {
+      display: inline-block;
+      margin-top: 32px;
+      color: var(--orange-soft);
+      text-decoration: none;
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.85);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 12px;
+    }
+
+    .lightbox span {
+      position: absolute;
+      font-size: 32px;
+      color: #fff;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .close { top: 30px; right: 40px; }
+    .prev { left: 30px; }
+    .next { right: 30px; }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+      <h1>Brand Design 01</h1>
+      <p>
+        A cohesive brand identity designed to establish clarity, trust, and visual consistency.
+        This project focuses on logo usage, typography hierarchy, color application, and real-world brand touchpoints.
+      </p>
+    </div>
+
+    <!-- CASE STUDY -->
+    <section class="case-section">
+      <h2>Case Study</h2>
+      <p>
+        This brand identity project was created to give the business a clear, professional,
+        and recognizable visual language. The goal was to ensure consistency across all
+        platforms while maintaining flexibility for future growth.
+      </p>
+    </section>
+
+    <!-- VISUALS -->
+    <section>
+      <div class="grid">
+        <img src="assets/images/brand-1/brand1.jpg">
+        <img src="assets/images/brand-1/brand2.jpg">
+        <img src="assets/images/brand-1/brand3.png">
+        <img src="assets/images/brand-1/brand4.jpg">
+        <img src="assets/images/brand-1/brand5.png">
+        <img src="assets/images/brand-1/brand6.png">
+        <img src="assets/images/brand-1/brand7.png">
+        <img src="assets/images/brand-1/brand8.png">
+      </div>
+    </section>
+
+    <!-- OUTCOME -->
+    <section class="case-section">
+      <h2>Outcome</h2>
+      <p>
+        The final brand system delivered a strong and unified visual presence,
+        improved brand recognition, and established a scalable foundation
+        that can support future brand expansion across digital and physical platforms.
+      </p>
+    </section>
+
+    <!-- BACK -->
+    <a href="projects.html" class="back">← Back to Projects</a>
+
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <span class="close">&times;</span>
+    <span class="prev">&#10094;</span>
+    <span class="next">&#10095;</span>
+    <img id="lightbox-img">
+  </div>
+
+  <script>
+    const images = document.querySelectorAll('.grid img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const closeBtn = document.querySelector('.close');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+
+    let currentIndex = 0;
+
+    function showImage(index) {
+      currentIndex = index;
+      lightboxImg.src = images[currentIndex].src;
+      lightbox.style.display = 'flex';
+    }
+
+    images.forEach((img, i) => {
+      img.addEventListener('click', () => showImage(i));
+    });
+
+    closeBtn.onclick = () => lightbox.style.display = 'none';
+    prevBtn.onclick = () => showImage((currentIndex - 1 + images.length) % images.length);
+    nextBtn.onclick = () => showImage((currentIndex + 1) % images.length);
+  </script>
+
+</body>
+</html>
+

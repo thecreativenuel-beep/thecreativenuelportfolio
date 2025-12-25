@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Social Media Design – Case Study</title>
+
+  <style>
+    /* ===== RESET ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      min-height: 100vh;
+      color: #f5f7fa;
+      background: linear-gradient(270deg, #0a1cff, #ff7a18, #0a1cff);
+      background-size: 600% 600%;
+      animation: gradientMove 15s ease infinite;
+      overflow-x: hidden;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ===== LAYOUT ===== */
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 80px 20px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 20px;
+    }
+
+    p {
+      max-width: 700px;
+      opacity: 0.9;
+      line-height: 1.7;
+      margin-bottom: 50px;
+    }
+
+    /* ===== IMAGE GRID ===== */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .image-grid img {
+      width: 100%;
+      border-radius: 16px;
+      cursor: pointer;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .image-grid img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    }
+
+    /* ===== LIGHTBOX ===== */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 999;
+    }
+
+    .lightbox-content {
+      display: block;
+      max-width: 90%;
+      max-height: 85%;
+      margin: auto;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 12px;
+    }
+
+    .close {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      font-size: 40px;
+      cursor: pointer;
+    }
+
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      font-size: 55px;
+      cursor: pointer;
+      user-select: none;
+      transform: translateY(-50%);
+    }
+
+    .prev { left: 20px; }
+    .next { right: 20px; }
+
+    /* ===== SCROLL ANIMATION ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateX(-60px);
+      transition: all 1s ease;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    @media(max-width: 600px){
+      .prev, .next { font-size: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container reveal">
+    <h1>Social Media Design 1</h1>
+    <p>
+      A collection of visual designs created for NEXAPAY brand storytelling, campaigns,
+      and audience engagement. Click any image to view fullscreen.
+    </p>
+
+    <div class="image-grid">
+      <img src="assets/images/social-1/slide1.jpg" class="clickable-img" alt="Slide 1">
+      <img src="assets/images/social-1/slide2.jpg" class="clickable-img" alt="Slide 2">
+      <img src="assets/images/social-1/slide3.jpg" class="clickable-img" alt="Slide 3">
+      <img src="assets/images/social-1/slide4.jpg" class="clickable-img" alt="Slide 4">
+      <img src="assets/images/social-1/slide5.jpg" class="clickable-img" alt="Slide 5">
+      <img src="assets/images/social-1/slide6.jpg" class="clickable-img" alt="Slide 6">
+      <img src="assets/images/social-1/slide7.jpg" class="clickable-img" alt="Slide 7">
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <span class="prev">&#10094;</span>
+    <span class="next">&#10095;</span>
+    <img id="lightbox-img" class="lightbox-content" alt="Expanded slide">
+  </div>
+
+  <script>
+    /* ===== SCROLL REVEAL ===== */
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) entry.target.classList.add('active');
+      });
+    }, { threshold: 0.2 });
+    reveals.forEach(r => observer.observe(r));
+
+    /* ===== LIGHTBOX GALLERY ===== */
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const images = document.querySelectorAll('.clickable-img');
+    const closeBtn = document.querySelector('.close');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+
+    let currentIndex = 0;
+    const sources = Array.from(images).map(img => img.src);
+
+    images.forEach((img, index) => {
+      img.addEventListener('click', () => {
+        currentIndex = index;
+        lightbox.style.display = 'block';
+        lightboxImg.src = sources[currentIndex];
+      });
+    });
+
+    closeBtn.onclick = () => lightbox.style.display = 'none';
+
+    nextBtn.onclick = e => {
+      e.stopPropagation();
+      currentIndex = (currentIndex + 1) % sources.length;
+      lightboxImg.src = sources[currentIndex];
+    };
+
+    prevBtn.onclick = e => {
+      e.stopPropagation();
+      currentIndex = (currentIndex - 1 + sources.length) % sources.length;
+      lightboxImg.src = sources[currentIndex];
+    };
+
+    lightbox.onclick = e => {
+      if(e.target === lightbox) lightbox.style.display = 'none';
+    };
+
+    document.addEventListener('keydown', e => {
+      if(lightbox.style.display === 'block'){
+        if(e.key === 'ArrowRight') nextBtn.click();
+        if(e.key === 'ArrowLeft') prevBtn.click();
+        if(e.key === 'Escape') closeBtn.click();
+      }
+    });
+  </script>
+
+</body>
+</html>
